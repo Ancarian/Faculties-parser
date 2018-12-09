@@ -1,0 +1,16 @@
+version: "3"
+services:
+  frontend:
+    build: frontend
+    ports:
+     - "4200:80"
+  backend:
+    command: java -jar api/target/api-0.0.1-SNAPSHOT.jar
+    build: backend
+    ports:
+     - "8080:8080"
+    links:
+     - redis
+  redis:
+    image: redis
+  # agent section
